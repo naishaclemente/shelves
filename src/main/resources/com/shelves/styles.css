@@ -1,0 +1,845 @@
+/*
+ * Shelves - visual style.
+ *
+ * Warm cream / burnt-orange palette with a light and a dark mode. Every colour
+ * used anywhere in the app is defined once here as a named variable, so the
+ * whole interface switches theme from a single place: the default .root block is
+ * light mode, and adding the "dark-mode" style class to the root re-defines the
+ * same variables with their dark values. Nothing below this block should hard-
+ * code a hex value; it should reference one of these variables, which is what
+ * lets a theme toggle recolour the entire app at once.
+ *
+ * The expiry status colours (fresh / soon / expired) are theme-aware too, but
+ * they keep doing their one job: signalling how soon something goes bad, shown
+ * as a bar down each row's leading edge. They are deliberately distinct from the
+ * accent so a warning can never be mistaken for an ordinary control.
+ */
+
+.root {
+    /* Surfaces */
+    -fx-bg:            #FAF6EF;
+    -fx-surface:       #FFFFFF;
+    -fx-surface-2:     #F5F0E6;
+    -fx-sidebar:       #F5F0E6;
+    -fx-border:        #E8E0D0;
+
+    /* Text tiers */
+    -fx-text:          #2C2A26;
+    -fx-muted:         #6B6659;
+    -fx-tertiary:      #8A8577;
+
+    /* Accent */
+    -fx-accent:        #C9601F;
+    -fx-accent-hover:  #B0541A;
+    -fx-on-accent:     #FFFFFF;
+    -fx-active-shelf:  #EFE3CC;
+
+    /* Danger and expiry warning */
+    -fx-danger:        #B23B2E;
+    -fx-warn-bg:       #F5DCC0;
+    -fx-warn-text:     #9A4A16;
+
+    /* Expiry status signal (leading-edge bars, status text) */
+    -fx-fresh:         #3F8F5C;
+    -fx-soon:          #B0741F;
+    -fx-expired:       #B23B2E;
+    -fx-none:          #8A8577;
+
+    /* Row rule that the status bar sits against */
+    -fx-row-rule:      #F0ECE2;
+
+    -fx-background-color: -fx-bg;
+    -fx-font-family: "Segoe UI", "SF Pro Text", "Helvetica Neue", "DejaVu Sans", sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: -fx-text;
+}
+
+/*
+ * Dark mode: same variable names, dark values. Toggled by adding the
+ * "dark-mode" style class to the scene root.
+ */
+.root.dark-mode {
+    -fx-bg:            #1A1D24;
+    -fx-surface:       #21252E;
+    -fx-surface-2:     #21252E;
+    -fx-sidebar:       #171A20;
+    -fx-border:        #2E323C;
+
+    -fx-text:          #EDEBE3;
+    -fx-muted:         #9A968A;
+    -fx-tertiary:      #6B675C;
+
+    -fx-accent:        #D9762F;
+    -fx-accent-hover:  #E88A44;
+    -fx-on-accent:     #1A1D24;
+    -fx-active-shelf:  #3A2E1E;
+
+    -fx-danger:        #E0685A;
+    -fx-warn-bg:       #4A3319;
+    -fx-warn-text:     #E0A768;
+
+    -fx-fresh:         #4ea86f;
+    -fx-soon:          #d9a441;
+    -fx-expired:       #E0685A;
+    -fx-none:          #6B675C;
+
+    -fx-row-rule:      #1f232a;
+}
+
+/* ==================== SIDEBAR ==================== */
+
+.sidebar {
+    -fx-background-color: -fx-sidebar;
+    -fx-border-color: transparent -fx-border transparent transparent;
+    -fx-border-width: 0 1 0 0;
+    -fx-min-width: 210px;
+    -fx-pref-width: 210px;
+    -fx-padding: 18 0 12 0;
+}
+
+.app-title {
+    -fx-text-fill: -fx-text;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 18 2 18;
+}
+
+.app-subtitle {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 11px;
+    -fx-padding: 0 18 14 18;
+}
+
+.section-label {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 10.5px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 18 6 18;
+}
+
+.shelf-list {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 0;
+}
+
+.shelf-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text;
+    -fx-padding: 7 18 7 18;
+    -fx-border-color: transparent transparent transparent transparent;
+    -fx-border-width: 0 0 0 3;
+}
+
+.shelf-list .list-cell:filled:hover {
+    -fx-background-color: -fx-surface-2;
+}
+
+.shelf-list .list-cell:filled:selected {
+    -fx-background-color: -fx-surface-2;
+    -fx-border-color: transparent transparent transparent -fx-accent;
+    -fx-border-width: 0 0 0 3;
+}
+
+.shelf-count {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 11px;
+}
+
+.sidebar-footer {
+    -fx-padding: 12 18 0 18;
+    -fx-border-color: -fx-border transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ==================== TOP BAR ==================== */
+
+.top-bar {
+    -fx-background-color: -fx-surface;
+    -fx-border-color: transparent transparent -fx-border transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10 16 10 16;
+}
+
+.search-field {
+    -fx-background-color: -fx-bg;
+    -fx-text-fill: -fx-text;
+    -fx-prompt-text-fill: -fx-muted;
+    -fx-background-radius: 5;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 5;
+    -fx-padding: 6 10 6 10;
+    -fx-pref-width: 300px;
+}
+
+.search-field:focused {
+    -fx-border-color: -fx-accent;
+}
+
+/* ==================== TABLE ==================== */
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: -fx-surface;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent -fx-border transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-size: 34px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-alignment: center-left;
+    -fx-padding: 0 8 0 8;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: -fx-bg;
+    -fx-border-color: transparent transparent -fx-row-rule transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-cell-size: 40px;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: -fx-bg;
+}
+
+.table-view .table-row-cell:filled:hover {
+    -fx-background-color: -fx-surface-2;
+}
+
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: -fx-active-shelf;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: -fx-text;
+    -fx-border-color: transparent;
+    -fx-padding: 0 8 0 8;
+    -fx-alignment: center-left;
+}
+
+/*
+ * Supporting columns (shelf, quantity, price, dates) at the secondary text
+ * tier, dimmer than item names. This is the dark-mode contrast hierarchy: item
+ * names stay at primary, supporting data drops to secondary, so the tiers are
+ * visibly distinct rather than flattened into one weight.
+ */
+.table-view .table-cell.supporting-cell {
+    -fx-text-fill: -fx-muted;
+}
+
+.table-view .placeholder .label {
+    -fx-text-fill: -fx-muted;
+}
+
+/*
+ * The status edge. Each row carries a coloured bar on its leading edge, set by
+ * the row factory from the item's expiry status.
+ */
+.table-row-cell.status-fresh   { -fx-border-color: transparent transparent -fx-row-rule -fx-fresh; -fx-border-width: 0 0 1 3; }
+.table-row-cell.status-soon    { -fx-border-color: transparent transparent -fx-row-rule -fx-soon; -fx-border-width: 0 0 1 3; }
+.table-row-cell.status-expired { -fx-border-color: transparent transparent -fx-row-rule -fx-expired; -fx-border-width: 0 0 1 3; }
+.table-row-cell.status-none    { -fx-border-color: transparent transparent -fx-row-rule -fx-none; -fx-border-width: 0 0 1 3; }
+
+.expired-text  { -fx-text-fill: -fx-expired; -fx-font-weight: bold; }
+.soon-text     { -fx-text-fill: -fx-soon; }
+.muted-text    { -fx-text-fill: -fx-muted; }
+
+.tag-chip {
+    -fx-background-color: -fx-surface-2;
+    -fx-text-fill: -fx-muted;
+    -fx-background-radius: 9;
+    -fx-padding: 1 7 1 7;
+    -fx-font-size: 11px;
+}
+
+/* ==================== BUTTONS ==================== */
+
+.button {
+    -fx-background-color: -fx-surface-2;
+    -fx-text-fill: -fx-text;
+    -fx-background-radius: 5;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 5;
+    -fx-padding: 6 14 6 14;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: -fx-surface-2;
+}
+
+.button:disabled {
+    -fx-opacity: 0.4;
+}
+
+.button.primary {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: -fx-on-accent;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent;
+}
+
+.button.primary:hover {
+    -fx-background-color: -fx-accent-hover;
+}
+
+.button.danger:hover {
+    -fx-background-color: -fx-warn-bg;
+    -fx-border-color: -fx-danger;
+}
+
+.button.ghost {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: -fx-muted;
+}
+
+.button.ghost:hover {
+    -fx-background-color: -fx-surface-2;
+    -fx-text-fill: -fx-text;
+}
+
+.button.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: -fx-muted;
+    -fx-alignment: center-left;
+    -fx-padding: 6 18 6 18;
+}
+
+.button.sidebar-button:hover {
+    -fx-background-color: -fx-surface-2;
+    -fx-text-fill: -fx-text;
+}
+
+.alert-badge {
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-soon;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-text-fill: -fx-soon;
+    -fx-padding: 4 12 4 12;
+    -fx-font-size: 12px;
+}
+
+.alert-badge:hover {
+    -fx-background-color: -fx-warn-bg;
+    -fx-text-fill: -fx-warn-text;
+    -fx-border-color: -fx-warn-text;
+}
+
+.alert-badge.quiet {
+    -fx-border-color: -fx-border;
+    -fx-text-fill: -fx-muted;
+}
+
+/* Light/dark theme toggle in the top bar. */
+.theme-toggle {
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-text-fill: -fx-muted;
+    -fx-padding: 4 12 4 12;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+
+.theme-toggle:hover {
+    -fx-border-color: -fx-accent;
+    -fx-text-fill: -fx-accent;
+}
+
+.alert-badge.quiet:hover {
+    -fx-background-color: -fx-surface-2;
+}
+
+/* ==================== TOGGLES ==================== */
+
+.toggle-button {
+    -fx-background-color: -fx-surface;
+    -fx-text-fill: -fx-muted;
+    -fx-border-color: -fx-border;
+    -fx-padding: 5 12 5 12;
+    -fx-cursor: hand;
+}
+
+.toggle-button:selected {
+    -fx-background-color: -fx-active-shelf;
+    -fx-text-fill: -fx-text;
+    -fx-border-color: -fx-accent;
+}
+
+/* ==================== FORMS ==================== */
+
+.text-field, .text-area, .combo-box, .date-picker, .spinner {
+    -fx-background-color: -fx-bg;
+    -fx-text-fill: -fx-text;
+    -fx-prompt-text-fill: -fx-tertiary;
+    -fx-background-radius: 5;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 5;
+}
+
+.text-field, .date-picker > .text-field {
+    -fx-padding: 6 9 6 9;
+}
+
+.text-field:focused, .text-area:focused, .combo-box:focused,
+.date-picker:focused, .spinner:focused {
+    -fx-border-color: -fx-accent;
+}
+
+.text-area .content {
+    -fx-background-color: -fx-bg;
+}
+
+.text-area {
+    -fx-padding: 2;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: -fx-text;
+    -fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: -fx-surface-2;
+    -fx-border-color: -fx-border;
+}
+
+.combo-box-popup .list-cell:filled:hover {
+    -fx-background-color: -fx-active-shelf;
+}
+
+.date-picker .arrow-button,
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.date-picker .arrow-button .arrow,
+.combo-box .arrow {
+    -fx-background-color: -fx-muted;
+}
+
+.check-box {
+    -fx-text-fill: -fx-text;
+}
+
+.check-box .box {
+    -fx-background-color: -fx-bg;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: -fx-accent;
+}
+
+.field-label {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 11.5px;
+}
+
+.form-section {
+    -fx-text-fill: -fx-text;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 6 0 2 0;
+}
+
+.hint-text {
+    -fx-text-fill: -fx-tertiary;
+    -fx-font-size: 11px;
+}
+
+.photo-frame {
+    -fx-background-color: -fx-bg;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-min-width: 132px;
+    -fx-min-height: 132px;
+    -fx-max-width: 132px;
+    -fx-max-height: 132px;
+}
+
+/* ==================== GROUPED VIEW ==================== */
+
+.titled-pane {
+    -fx-text-fill: -fx-text;
+}
+
+.titled-pane > .title {
+    -fx-background-color: -fx-surface;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 5 5 0 0;
+    -fx-background-radius: 5 5 0 0;
+    -fx-padding: 8 12 8 12;
+}
+
+.titled-pane > .title > .text {
+    -fx-fill: -fx-text;
+    -fx-font-weight: bold;
+}
+
+.titled-pane > .title > .arrow-button .arrow {
+    -fx-background-color: -fx-muted;
+}
+
+.titled-pane > *.content {
+    -fx-background-color: -fx-bg;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 0 0 5 5;
+}
+
+.scroll-pane, .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: -fx-border;
+    -fx-background-radius: 4;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: -fx-border;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+/* ==================== BOTTOM BAR ==================== */
+
+.action-bar {
+    -fx-background-color: -fx-surface;
+    -fx-border-color: -fx-border transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 10 16 10 16;
+}
+
+.status-message {
+    -fx-text-fill: -fx-fresh;
+    -fx-font-size: 12px;
+}
+
+.total-value {
+    -fx-text-fill: -fx-text;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* ==================== DIALOGS ==================== */
+
+.shelves-dialog {
+    -fx-background-color: -fx-surface;
+}
+
+.shelves-dialog .header-panel {
+    -fx-background-color: -fx-surface-2;
+}
+
+.shelves-dialog .header-panel .label {
+    -fx-text-fill: -fx-text;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.shelves-dialog .content.label,
+.shelves-dialog .label {
+    -fx-text-fill: -fx-text;
+}
+
+.technical-detail {
+    -fx-font-family: "Consolas", "DejaVu Sans Mono", monospace;
+    -fx-font-size: 11px;
+}
+
+.tooltip {
+    -fx-background-color: -fx-surface-2;
+    -fx-text-fill: -fx-text;
+    -fx-border-color: -fx-border;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-font-size: 12px;
+}
+
+.separator .line {
+    -fx-border-color: -fx-border transparent transparent transparent;
+}
+
+/* ==================== ADDED: forms, notes, history, alerts, export ==================== */
+
+/* Inline validation summary inside the item form. */
+.form-error {
+    -fx-text-fill: -fx-danger;
+    -fx-font-size: 12px;
+    -fx-background-color: -fx-warn-bg;
+    -fx-border-color: -fx-danger;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8 10 8 10;
+}
+
+/* The little marker on a table row that has notes. */
+.notes-dot {
+    -fx-fill: -fx-accent;
+}
+
+.notes-icon-cell {
+    -fx-alignment: center;
+}
+
+.search-hint {
+    -fx-text-fill: -fx-tertiary;
+    -fx-font-size: 11px;
+    -fx-padding: 0 0 0 4;
+}
+
+/* Notes aggregate panel. */
+.notes-panel {
+    -fx-background-color: -fx-bg;
+}
+
+.note-card {
+    -fx-background-color: -fx-surface;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 10 12 10 12;
+}
+
+.note-card .note-item-name {
+    -fx-text-fill: -fx-text;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.note-card .note-shelf {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 11px;
+}
+
+.note-card .note-body {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 12px;
+}
+
+/* Price history dialog. */
+.history-summary {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 12px;
+}
+
+.history-chart-bar {
+    -fx-fill: -fx-accent;
+}
+
+.history-chart-axis {
+    -fx-stroke: -fx-border;
+}
+
+.history-chart-label {
+    -fx-fill: -fx-muted;
+    -fx-font-size: 10px;
+}
+
+.history-chart-value {
+    -fx-fill: -fx-muted;
+    -fx-font-size: 10px;
+}
+
+.purchase-correction .header-panel {
+    -fx-background-color: -fx-surface-2;
+}
+
+/* Alerts: expired vs expiring, colour-coded. */
+.alert-group-expired {
+    -fx-text-fill: -fx-expired;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.alert-group-soon {
+    -fx-text-fill: -fx-soon;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+.alert-row-expired {
+    -fx-text-fill: -fx-expired;
+}
+
+.alert-row-soon {
+    -fx-text-fill: -fx-soon;
+}
+
+.alert-row-shelf {
+    -fx-text-fill: -fx-tertiary;
+    -fx-font-size: 11px;
+}
+
+.alert-scroll {
+    -fx-background-color: transparent;
+    -fx-min-width: 460px;
+    -fx-pref-height: 380px;
+}
+
+/* Export preview. */
+.export-preview {
+    -fx-background-color: -fx-surface;
+}
+
+.export-toolbar {
+    -fx-padding: 4 0 10 0;
+}
+
+.preview-note {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 11px;
+}
+
+/* ==================== ADDED: tabs, history, notes toggle, deleted items ==================== */
+
+/* Tab pane inside the edit dialog. */
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: -fx-surface;
+}
+
+.tab-pane .tab {
+    -fx-background-color: -fx-surface;
+    -fx-background-radius: 5 5 0 0;
+    -fx-padding: 5 14 5 14;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: -fx-surface-2;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 12px;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: -fx-text;
+    -fx-font-weight: bold;
+}
+
+.tab-pane .tab-header-area .headers-region {
+    -fx-padding: 4 0 0 4;
+}
+
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-color: transparent;
+}
+
+/* Item history panel. */
+.history-panel {
+    -fx-background-color: transparent;
+}
+
+.history-section-header {
+    -fx-text-fill: -fx-text;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 4 0 2 0;
+}
+
+/* Usage Tracker donut legend: a label and its exact count per segment. */
+.legend-label {
+    -fx-text-fill: -fx-muted;
+    -fx-font-size: 12px;
+}
+
+.legend-value {
+    -fx-text-fill: -fx-text;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* Price History table: a compact spreadsheet pane, capped height with scroll. */
+.history-table {
+    -fx-background-color: -fx-surface;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.history-table .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.history-table .table-cell {
+    -fx-text-fill: -fx-muted;
+}
+
+/* Segmented item-view toggles (List | By tag). */
+.view-segment {
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.segment-left {
+    -fx-background-radius: 5 0 0 5;
+    -fx-border-width: 0 1 0 0;
+    -fx-border-color: -fx-border;
+}
+
+.segment-right {
+    -fx-background-radius: 0 5 5 0;
+}
+
+/* The Notes toggle, set apart as a different kind of view. */
+.notes-toggle {
+    -fx-background-color: -fx-surface;
+    -fx-text-fill: -fx-muted;
+    -fx-border-color: -fx-border;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5 14 5 14;
+    -fx-cursor: hand;
+}
+
+.notes-toggle:selected {
+    -fx-background-color: -fx-active-shelf;
+    -fx-text-fill: -fx-text;
+    -fx-border-color: -fx-accent;
+}
+
+/* Deleted Items entry in the sidebar. */
+.deleted-items-button {
+    -fx-text-fill: -fx-muted;
+}
+
+.deleted-items-button:hover {
+    -fx-text-fill: -fx-danger;
+}

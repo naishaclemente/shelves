@@ -1,0 +1,134 @@
+# Built-in shelf life reference for Shelves.
+# Figures are typical guidance for common storage, in days, and are a starting
+# point rather than a guarantee. Always defer to the printed date on packaging.
+# Columns: product_name,category,unopened_days,opened_days
+# A blank value means "no general figure applies".
+#
+# Dairy and eggs
+milk,Dairy,7,7
+whole milk,Dairy,7,7
+skim milk,Dairy,7,7
+buttermilk,Dairy,14,14
+heavy cream,Dairy,30,7
+half and half,Dairy,14,7
+sour cream,Dairy,21,14
+cream cheese,Dairy,30,10
+cottage cheese,Dairy,14,7
+yogurt,Dairy,21,7
+greek yogurt,Dairy,21,7
+butter,Dairy,90,30
+margarine,Dairy,180,30
+cheddar cheese,Dairy,180,30
+mozzarella,Dairy,21,7
+parmesan,Dairy,270,60
+sliced cheese,Dairy,60,21
+eggs,Dairy,35,
+egg whites,Dairy,10,3
+#
+# Meat, poultry and seafood
+ground beef,Meat,2,
+steak,Meat,4,
+pork chops,Meat,4,
+bacon,Meat,14,7
+sausage,Meat,2,
+hot dogs,Meat,14,7
+deli meat,Meat,14,4
+ham,Meat,7,4
+chicken breast,Meat,2,
+whole chicken,Meat,2,
+ground turkey,Meat,2,
+fish,Seafood,2,
+salmon,Seafood,2,
+shrimp,Seafood,2,
+canned tuna,Seafood,1095,2
+#
+# Produce
+apples,Produce,30,
+bananas,Produce,5,
+oranges,Produce,21,
+lemons,Produce,21,
+grapes,Produce,7,
+strawberries,Produce,5,
+blueberries,Produce,10,
+lettuce,Produce,7,
+spinach,Produce,5,
+carrots,Produce,28,
+celery,Produce,14,
+broccoli,Produce,7,
+tomatoes,Produce,7,
+potatoes,Produce,60,
+onions,Produce,60,
+garlic,Produce,90,
+mushrooms,Produce,7,
+bell peppers,Produce,10,
+cucumber,Produce,7,
+avocado,Produce,4,
+#
+# Pantry staples
+bread,Bakery,7,
+tortillas,Bakery,21,7
+bagels,Bakery,5,
+rice,Pantry,730,365
+pasta,Pantry,730,365
+flour,Pantry,365,180
+sugar,Pantry,730,730
+salt,Pantry,,
+baking soda,Pantry,730,180
+cereal,Pantry,365,60
+oats,Pantry,365,120
+peanut butter,Pantry,270,90
+jelly,Pantry,365,180
+honey,Pantry,,
+olive oil,Pantry,540,180
+vegetable oil,Pantry,365,180
+vinegar,Pantry,,
+soy sauce,Condiment,1095,365
+ketchup,Condiment,365,180
+mustard,Condiment,730,365
+mayonnaise,Condiment,120,60
+barbecue sauce,Condiment,365,120
+hot sauce,Condiment,1095,180
+salad dressing,Condiment,365,60
+canned beans,Pantry,1095,4
+canned soup,Pantry,1095,4
+canned corn,Pantry,1095,4
+canned tomatoes,Pantry,1095,7
+pasta sauce,Pantry,540,5
+chicken broth,Pantry,730,4
+#
+# Drinks and snacks
+coffee,Beverage,365,90
+ground coffee,Beverage,365,14
+tea,Beverage,730,180
+orange juice,Beverage,21,7
+apple juice,Beverage,240,10
+soda,Beverage,270,3
+bottled water,Beverage,730,
+chips,Snack,60,7
+crackers,Snack,240,30
+cookies,Snack,120,14
+granola bars,Snack,180,
+nuts,Snack,180,90
+popcorn kernels,Snack,730,365
+#
+# Frozen
+frozen vegetables,Frozen,240,
+frozen pizza,Frozen,180,
+ice cream,Frozen,120,30
+frozen chicken,Frozen,270,
+#
+# Household and non-food
+paper towels,Household,,
+dish soap,Household,730,
+laundry detergent,Household,540,
+batteries,Household,1825,
+light bulbs,Household,,
+#
+# Medicine cabinet
+ibuprofen,Medicine,1095,
+acetaminophen,Medicine,1095,
+antacid,Medicine,1095,
+cough syrup,Medicine,730,180
+bandages,Medicine,1825,
+hydrogen peroxide,Medicine,1095,180
+sunscreen,Medicine,1095,
